@@ -1,0 +1,24 @@
+0.- Cambiar el nombre a la carpeta repository dentro de .m2
+
+1.- Agregar el archivo settings.xml a la carpeta C:\Users\USUARIO\.m2\
+
+<settings>
+  <proxies>
+   <proxy>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>PROXY</host>
+      <port>PUERTO</port>
+      <username>USUARIO</username>
+      <password>CLAVE</password>
+    </proxy>
+  </proxies>
+</settings>
+
+2.- En Eclipse ir a Window -> Preferences. 
+	- Escribir Maven y buscar User settings. 
+	- Presionar el botón Update
+
+3.- Clic derecho sobre el proyecto y seleccionar: Maven -> Update Project
+
+PRUEBA DE QUE TODO FUNCIONA: Se deberían quitar los errores relacionados con el POM
