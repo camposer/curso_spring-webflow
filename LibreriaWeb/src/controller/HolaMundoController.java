@@ -65,6 +65,10 @@ public class HolaMundoController {
 		req.getRequestDispatcher("/holaMundo.jsp").forward(req, res);
 	}
 
+	@RequestMapping("/index")
+	public String index() {
+		return "index";
+	}
 }
 
 
