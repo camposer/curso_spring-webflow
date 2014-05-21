@@ -1,0 +1,7 @@
+Requerimientos de configuración:
+- Registry. Especifica dónde están las definiciones de flujos (*-flow.xml)
+- Executor. Define la ejecución. Puede definir repositorios y listeners
+- [FlowBuilderServices]. Especifica configuraciones adicionales del Executor
+- FlowHandlerMapping. Identifica las URL de Spring WebFlow
+- FlowHandlerAdapter. Redirige las peticiones a los manejadores adecuados
+

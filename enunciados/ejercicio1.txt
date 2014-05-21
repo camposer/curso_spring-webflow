@@ -1,0 +1,14 @@
+Flow: holaMundo-flow
+
+Estado #1: hola (view-state: hola.jsp)
+	- Imprime:
+		Hola
+	- Transiciones:
+		siguiente: mundo
+
+Estado #2: mundo (view-state: mundo.jsp)
+	- Imprime:
+		Mundo
+	- Transiciones:
+		atrás: hola
+		finalizar: hola (end-state)
