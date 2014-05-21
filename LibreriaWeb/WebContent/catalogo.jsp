@@ -25,22 +25,40 @@
 			text-align: center;
 		}
 	</style>
+	<script>
+		var cambiarCategoria = function() {
+			document.forms[0].submit();
+		};
+
+		var agregar = function() {
+			document.forms[0].action = "agregar.lib";
+			document.forms[0].submit();
+		};
+		
+		var comprar = function() {
+			window.location.href = "comprar.lib";
+		}
+	</script>
 </head>
 <body>
 	<h1>Catálogo</h1>
-	<form:form action="agregar.lib" modelAttribute="ordenForm">
+	<form:form action="catalogo.lib" modelAttribute="ordenForm">
 		<table id="formulario">
 			<tr>
 				<td>Categoría</td>
 				<td>
 					<form:select path="categoria" 
-						items="${categorias}" itemValue="id" itemLabel="nombre">
+						items="${categorias}" itemValue="id" itemLabel="nombre" onchange="javascript:cambiarCategoria()">
 					</form:select>
 				</td>
 			</tr>
 			<tr>
 				<td>Libros</td>
-				<td>select</td>
+				<td>
+					<form:select path="libro" 
+						items="${libros}" itemValue="id" itemLabel="nombre">
+					</form:select>
+				</td>
 			</tr>
 			<tr>
 				<td>Cantidad</td>
@@ -48,7 +66,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<form:button>Agregar</form:button>
+					<input type="submit" value="Agregar" onclick="javascript:agregar()"/>
 				</td>
 		</table>
 	</form:form>
@@ -60,21 +78,17 @@
 			<th>Cantidad</th>
 			<th>Total</th>
 		</tr>
-		<tr>
-			<td>Libro #1</td>
-			<td>300</td>
-			<td>2</td>
-			<td>600</td>
-		</tr>
-		<tr>
-			<td>Libro #2</td>
-			<td>250</td>
-			<td>2</td>
-			<td>500</td>
-		</tr>
+		<c:forEach items="${sessionScope.ordenLibros}" var="l">
+			<tr>
+				<td>${l.nombre}</td>
+				<td>${l.precio}</td>
+				<td>${l.cantidad}</td>
+				<td>${l.total}</td>
+			</tr>
+		</c:forEach>
 	</table>
 	<div id="btnComprar">
-		<input type="button" value="Comprar"/>		
+		<input type="button" value="Comprar" onclick="javascript:comprar()"/>		
 	</div>
 </body>
 </html>

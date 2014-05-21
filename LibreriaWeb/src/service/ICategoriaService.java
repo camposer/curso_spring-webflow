@@ -6,4 +6,5 @@ import model.Categoria;
 
 public interface ICategoriaService {
 	public List<Categoria> getCategorias();
+	public Categoria getCategoria(Long id);
 }
