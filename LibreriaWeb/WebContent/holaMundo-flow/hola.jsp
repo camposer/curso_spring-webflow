@@ -8,7 +8,7 @@
 	<title>Hola</title>
 </head>
 <body>
-	<form:form action="${flowExecutionUrl}">
+	<form:form id="holaMundoForm" action="${flowExecutionUrl}">
 		Hola - ${mensaje}<br/>
 		<input type="submit" name="_eventId_siguiente" value="siguiente"/>
 	</form:form>

@@ -55,19 +55,12 @@ public class LibreriaController {
 			HttpSession sesion) {
 
 		List<LibroTo> ordenLibros = (List<LibroTo>) sesion.getAttribute("ordenLibros");
-		if (ordenLibros == null)
+		if (ordenLibros == null) {
 			ordenLibros = new ArrayList<LibroTo>();
+			sesion.setAttribute("ordenLibros", ordenLibros);
+		}
 		
-		// TODO: Incluir validaciones!
-		Libro libro = libroService.getLibro(ordenForm.getLibro());
-		
-		LibroTo libroTo = new LibroTo();
-		libroTo.setNombre(libro.getNombre());
-		libroTo.setPrecio(libro.getPrecio());
-		libroTo.setCantidad(ordenForm.getCantidad()); // FIXME: Qué pasa cuando el libro ya había sido agregado?
-		ordenLibros.add(libroTo);
-		
-		sesion.setAttribute("ordenLibros", ordenLibros);
+		agregarOrdenLibro(ordenForm, ordenLibros);
 		
 		return "redirect:catalogo.lib";
 	}
@@ -79,7 +72,26 @@ public class LibreriaController {
 		return "comprar.jsp";
 	}
 	
+	public boolean agregarOrdenLibro(OrdenForm ordenForm, List<LibroTo> ordenLibros) {
+		// TODO: Incluir validaciones!
+		Libro libro = libroService.getLibro(ordenForm.getLibro());
+		
+		LibroTo libroTo = new LibroTo();
+		libroTo.setNombre(libro.getNombre());
+		libroTo.setPrecio(libro.getPrecio());
+		libroTo.setCantidad(ordenForm.getCantidad()); // FIXME: Qué pasa cuando el libro ya había sido agregado?
+		ordenLibros.add(libroTo);
+		
+		return true; // TODO: Agregar otros tipos de retorno si accede a datos
+	}
 }
+
+
+
+
+
+
+
 
 
 

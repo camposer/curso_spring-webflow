@@ -1,6 +1,10 @@
 package to;
 
-public class LibroTo {
+import java.io.Serializable;
+
+public class LibroTo implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private String nombre;
 	private Float precio;
 	private Integer cantidad;

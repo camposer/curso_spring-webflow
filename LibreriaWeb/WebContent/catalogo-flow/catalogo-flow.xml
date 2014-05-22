@@ -7,6 +7,8 @@ xsi:schemaLocation="
 	<on-start>
 		<evaluate expression="libreriaController.ordenForm()" 
 			result="flowScope.ordenForm"/>
+		<evaluate expression="new java.util.ArrayList()" 
+			result="flowScope.ordenLibros"/>
 	</on-start>
 
 	<view-state id="seleccionarCategoria" 
@@ -36,14 +38,22 @@ xsi:schemaLocation="
 				result="requestScope.libros"/>
 		</on-render>
 		<transition on="atras" to="seleccionarCategoria"/>
-		<transition on="siguiente" to="mostrarOrdenes"/>
+		<transition on="siguiente" to="agregarOrden"/>
 	</view-state>
 	
+	<action-state id="agregarOrden">
+		<evaluate expression="libreriaController.agregarOrdenLibro(flowScope.ordenForm, flowScope.ordenLibros)"/>
+		<transition on="yes" to="mostrarOrdenes"/><!-- true -->
+		<transition on="no" to="seleccionarLibro"/><!-- false -->
+	</action-state>
 	
-	<view-state id="mostrarOrdenes">
+	<view-state id="mostrarOrdenes" view="mostrarOrdenes.jsp">
 		<transition on="atras" to="seleccionarLibro"/>
-		<transition on="agregar" to="seleccionarCategoria"/>
-		<transition on="comprar" to="XXXX"/>
+		<transition on="agregar" to="seleccionarCategoria">
+			<evaluate expression="libreriaController.ordenForm()" 
+				result="flowScope.ordenForm"/>
+		</transition>
+		<transition on="comprar" to="end"/>
 	</view-state>
 	
 	<end-state id="end" view="externalRedirect:../index.jsp"/>
