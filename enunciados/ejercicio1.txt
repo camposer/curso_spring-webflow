@@ -11,4 +11,7 @@ Estado #2: mundo (view-state: mundo.jsp)
 		Mundo
 	- Transiciones:
 		atrás: hola
-		finalizar: hola (end-state)
+		finalizar: chao (end-state)
+
+Para ejecutar ejemplo actual:
+	http://localhost:8080/LibreriaWeb/holaMundo-flow.lib

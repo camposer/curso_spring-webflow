@@ -3,5 +3,5 @@ Requerimientos de configuración:
 - Executor. Define la ejecución. Puede definir repositorios y listeners
 - [FlowBuilderServices]. Especifica configuraciones adicionales del Executor
 - FlowHandlerMapping. Identifica las URL de Spring WebFlow
-- FlowHandlerAdapter. Redirige las peticiones a los manejadores adecuados
+- FlowHandlerAdapter. Redirige las peticiones a los manejadores adecuados	
 

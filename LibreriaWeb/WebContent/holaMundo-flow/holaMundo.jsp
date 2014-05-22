@@ -4,9 +4,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Seleccionar categoría</title>
+	<title>Hola mundo</title>
 </head>
 <body>
-	Seleccionar categoría
+	Hola mundo! ${nombre}
 </body>
 </html>

@@ -1,0 +1,23 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+	http://www.springframework.org/schema/webflow
+	http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<!-- view-state id="holaMundo" 
+		view="holaMundo.jsp"/-->
+	<on-start>
+		<evaluate expression="holaMundoController.getMensaje()" result="flowScope.mensaje"/>
+	</on-start>
+	
+	<view-state id="hola" view="hola.jsp">
+		<transition on="siguiente" to="mundo"/>
+	</view-state>
+
+	<view-state id="mundo" view="mundo.jsp">
+		<transition on="atras" to="hola"/>
+		<transition on="finalizar" to="end"/>
+	</view-state>
+	
+	<end-state id="end" view="externalRedirect:../index.jsp"/>
+</flow>

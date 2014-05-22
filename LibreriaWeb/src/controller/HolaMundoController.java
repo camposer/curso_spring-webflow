@@ -69,6 +69,10 @@ public class HolaMundoController {
 	public String index() {
 		return "index";
 	}
+	
+	public String getMensaje() {
+		return "Spring WebFlow";
+	}
 }
 
 
