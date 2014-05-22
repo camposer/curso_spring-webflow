@@ -20,11 +20,17 @@
 		#formulario tr:nth-child(4) td {
 			text-align: center;
 		}
+		
+		#errores {
+			text-align: center;
+			border: 1px solid red;
+		}
 	</style>
 </head>
 <body>
 	<h1>Catálogo</h1>
 	<form:form action="${flowExecutionUrl}" modelAttribute="ordenForm">
+		<div id="errores"><form:errors path="*"/></div>
 		<table id="formulario">
 			<tr>
 				<td>Libros</td>

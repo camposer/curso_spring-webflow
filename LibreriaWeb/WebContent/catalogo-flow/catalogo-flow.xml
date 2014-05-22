@@ -22,8 +22,14 @@ xsi:schemaLocation="
 			<evaluate expression="categoriaService.getCategorias()"
 				result="requestScope.categorias" />
 		</on-render>
-		<transition on="siguiente" to="seleccionarLibro"/>
+		<transition on="siguiente" to="validarCategoria"/>
 	</view-state>
+	
+	<decision-state id="validarCategoria">
+		<if test="flowScope.ordenForm.categoria != 0"
+			then="seleccionarLibro" 
+			else="seleccionarCategoria"/>
+	</decision-state>
 	
 	<view-state id="seleccionarLibro"
 		model="ordenForm"
@@ -56,7 +62,8 @@ xsi:schemaLocation="
 		<transition on="comprar" to="end"/>
 	</view-state>
 	
-	<end-state id="end" view="externalRedirect:../index.jsp"/>
+	<!-- Al llegar a este estado elimina todos el histórico del flujo -->
+	<end-state id="end" view="externalRedirect:/index.jsp"/>
 </flow>
 
 
