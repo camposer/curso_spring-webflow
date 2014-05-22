@@ -16,7 +16,7 @@
 		<url-pattern>*.lib</url-pattern>
 	</servlet-mapping>
 
-	<listener>
+	<listener><!-- Contexto de Aplicación de capas inferiores (Servicio hacia abajo) -->
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<context-param>

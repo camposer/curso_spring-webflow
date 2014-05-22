@@ -1,0 +1,54 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+	http://www.springframework.org/schema/webflow
+	http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	
+	<on-start>
+		<evaluate expression="libreriaController.ordenForm()" 
+			result="flowScope.ordenForm"/>
+	</on-start>
+
+	<view-state id="seleccionarCategoria" 
+		model="ordenForm" 
+		view="seleccionarCategoria.jsp">
+		
+		<binder>
+			<binding property="categoria"/>
+		</binder>
+		<on-render>
+			<evaluate expression="categoriaService.getCategorias()"
+				result="requestScope.categorias" />
+		</on-render>
+		<transition on="siguiente" to="seleccionarLibro"/>
+	</view-state>
+	
+	<view-state id="seleccionarLibro"
+		model="ordenForm"
+		view="seleccionarLibro.jsp">
+		
+		<binder>
+			<binding property="libro"/>
+			<binding property="cantidad"/>
+		</binder>
+		<on-render>
+			<evaluate expression="libroService.getLibrosByCategoria(flowScope.ordenForm.categoria)"
+				result="requestScope.libros"/>
+		</on-render>
+		<transition on="atras" to="seleccionarCategoria"/>
+		<transition on="siguiente" to="mostrarOrdenes"/>
+	</view-state>
+	
+	
+	<view-state id="mostrarOrdenes">
+		<transition on="atras" to="seleccionarLibro"/>
+		<transition on="agregar" to="seleccionarCategoria"/>
+		<transition on="comprar" to="XXXX"/>
+	</view-state>
+	
+	<end-state id="end" view="externalRedirect:../index.jsp"/>
+</flow>
+
+
+
+

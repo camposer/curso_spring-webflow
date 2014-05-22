@@ -1,6 +1,10 @@
 package form;
 
-public class OrdenForm {
+import java.io.Serializable;
+
+public class OrdenForm implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private Long categoria;
 	private Long libro;
 	private Integer cantidad;

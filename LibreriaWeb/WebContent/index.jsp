@@ -9,6 +9,8 @@
 <body>
 	<h1>Índice</h1>
 	<a href="catalogo.lib">Catálogo (sólo Spring MVC)</a><br/>
-	<a href="holaMundo-flow.lib">Ejemplo holaMundo-flow</a>
+	<a href="holaMundo-flow.lib">Ejemplo holaMundo-flow</a><br/>
+	
+	<a href="catalogo-flow.lib">Catálogo (Spring WebFlow)</a>
 </body>
 </html>
